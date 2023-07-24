@@ -5,18 +5,24 @@ import EditarProducto from "./components/EditarProducto";
 
 import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
+//Redux
+import { Provider } from "react-redux";
+import store from "./store"
+
 function App() {
   return (
     <Router>
-        <Header />
+      <Provider store={store}>
+          <Header />
 
-        <div className="container mt-5">
-          <Routes>
-            <Route exact path="/" element={<Productos />}></Route>
-            <Route exact path="/productos/nuevo" element={<NuevoProducto />}></Route>
-            <Route exact path="/productos/editar/:id" element={<EditarProducto />}></Route>
-          </Routes>
-        </div>
+          <div className="container mt-5">
+            <Routes>
+              <Route exact path="/" element={<Productos />}></Route>
+              <Route exact path="/productos/nuevo" element={<NuevoProducto />}></Route>
+              <Route exact path="/productos/editar/:id" element={<EditarProducto />}></Route>
+            </Routes>
+          </div>
+        </Provider>
     </Router>
   );
 }

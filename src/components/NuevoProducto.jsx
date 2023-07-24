@@ -1,4 +1,6 @@
 
+
+const { crearNuevoProductoAction } = from "../actions"
 const NuevoProducto = () => {
   return (
     <div className="row justify-content-center">
