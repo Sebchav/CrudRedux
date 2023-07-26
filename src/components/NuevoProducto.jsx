@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 
 import { crearNuevoProductoAction } from "../actions/productoActions"
@@ -12,10 +13,16 @@ const NuevoProducto = () => {
     //Utilizar useDispatch y te crea una función
     const dispatch = useDispatch();
 
+    let navigate = useNavigate();
+
+    //Acceder al state del store
+    const cargando = useSelector( state => state.productos.loading);
+
+    const error = useSelector(state => state.productos.error);
+
     // mandar llamar el action de producto
     const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto) )
     
-
     //Cuando el usuario haga submit
     const submitNuevoProducto = e => {
         e.preventDefault();
@@ -29,6 +36,9 @@ const NuevoProducto = () => {
             nombre,
             precio
         });
+
+        //redireccionar
+        navigate("/");
     }
 
   return (
@@ -73,6 +83,8 @@ const NuevoProducto = () => {
                         >Agregar</button>
 
                     </form>
+                    {cargando ? <p>Cargando...</p> : null}
+                    {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> : null}
                 </div>
             </div>
         </div>
