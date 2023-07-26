@@ -4,8 +4,8 @@ import {
     AGREGAR_PRODUCTO_ERROR
 } from "../types";
 
-export function crearNuevoProductoAction(){
-    return ()=> {
-        console.log("Desde action")
+export function crearNuevoProductoAction(producto){
+    return (dispatch)=> {
+        dispatch( agregarProducto() );
     }
 }
