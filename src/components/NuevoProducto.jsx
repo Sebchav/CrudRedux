@@ -14,7 +14,7 @@ const NuevoProducto = () => {
     const dispatch = useDispatch();
 
     let navigate = useNavigate();
-
+    
     //Acceder al state del store
     const cargando = useSelector( state => state.productos.loading);
 
