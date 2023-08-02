@@ -13,7 +13,7 @@ const Productos = () => {
     const cargarProductos = ()=> dispatch(obtenerProductosAction());
 
     cargarProductos();
-   
+    // es-lint-disable-next-line
   }, []);
 
   //Obtener el state
